@@ -1,0 +1,39 @@
+# 强论断模式。见 IMPLEMENTATION-P3.md §4.1 规则 2。
+# 命中这些模式的句子被视为"强论断"，正文里必须携带 [claim:<id>] 标记，
+# 且该 id 必须在 paper/claims.yaml 注册、source 合法。
+#
+# 列表**只增不减**。误报是可接受的成本（多标一个 [claim:id] 而已），
+# 漏报的代价是 HARKing 溜过去。
+
+strong_claim_patterns:
+  # 中文
+  - "优于"
+  - "首次"
+  - "显著"
+  - "证明"
+  - "表明"
+  - "发现"          # "我们（还）发现……" —— 典型的偷加结论口气
+  - "证实"
+  - "超过"
+  - "超越"
+  - "最优"
+  - "最佳"
+  - "领先"
+  - "新颖"
+  - "有效"          # "尤其有效 / 特别有效"
+  # 英文
+  - "outperform"
+  - "significantly"
+  - "significant"
+  - "state-of-the-art"
+  - "SOTA"
+  - "novel"
+  - "best"
+  - "surpass"
+  - "we find"
+  - "we found"
+  - "we discover"
+  - "demonstrate"
+  - "prove"
+  - "superior"
+  - "effective"

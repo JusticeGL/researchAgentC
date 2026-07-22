@@ -1,0 +1,7 @@
+{
+  "title": "Ablation a1: effect of removing CSP",
+  "ylabel": "Accuracy",
+  "groups": ["Full model", "Remove CSP (a1)"],
+  "means": [0.742, 0.623],
+  "stds": [0.038, 0.051]
+}

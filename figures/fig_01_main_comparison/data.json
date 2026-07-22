@@ -1,0 +1,7 @@
+{
+  "title": "Within-session accuracy: baseline vs. proposed",
+  "ylabel": "Accuracy",
+  "groups": ["Baseline (CSP+LDA)", "Proposed"],
+  "means": [0.681, 0.742],
+  "stds": [0.045, 0.038]
+}

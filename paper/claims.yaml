@@ -1,0 +1,28 @@
+# Claim registry。见 IMPLEMENTATION-P3.md §4.1。
+# 正文里每一句强论断都要带 [claim:<id>]，且 id 必须在此注册。
+# source.kind 只有三种：contract | ablation | approved。没有第四种。
+# status 由 hypothesis_held 确定性回填（held|not_held|inconclusive），不可手写。
+
+claims:
+  - id: primary
+    source:
+      kind: contract
+      ref: hypothesis            # 冻结契约里存在的字段
+    evidence:
+      runs_tag: main_confirmed
+      stat: paired_t
+    template: >
+      {{method}} 在 {{dataset}} 的 {{split}} 协议下将 {{metric}}
+      从 {{agg:baseline.acc}} 提升到 {{agg:main.acc}}
+    status: pending
+
+  - id: mech_a1
+    source:
+      kind: ablation
+      ref: a1                    # 必须是 contract.preregistered_ablations 里的 id
+    evidence:
+      runs_tag: ablation_a1
+    template: >
+      移除 CSP 后 {{metric}} 下降 {{agg:abl_a1.acc}}，
+      说明性能来自空间滤波而非分类器
+    status: pending

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "research-agent"
+version = "0.1.0"
+description = "科研 agent 底座层 —— 让论文里的数字和引用不可能被伪造的基础设施"
+requires-python = ">=3.9"
+dependencies = [
+    "pydantic>=2",
+]
+
+# 说明书要求 Python 3.11+。仓库根 .venv 即 Python 3.11.4 环境（推荐）；
+# 代码同时兼容 3.9（pydantic 模型用 typing.Optional/List 而非 PEP604 的 `X | None`）。
+# harness(MOABB/MNE) 与 corpus(PaperQA2) 属可选重依赖，缺失时相关测试自动 skip。
+[project.optional-dependencies]
+harness = ["moabb", "mne"]
+corpus = ["paper-qa"]
+embed = ["sentence-transformers"]   # 去重真实句向量（all-MiniLM-L6-v2）；缺失时用离线哈希回退
+loop = ["aideml", "pyyaml"]         # 实验搜索循环 + AIDE 集成（AIDE 运行还需 LLM API key）
+
+[tool.setuptools]
+packages = ["core", "harness", "loop", "adapters", "writing", "figures", "ideation", "review"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "network: 需要联网（PyPI / 数据集下载 / 文献 API）",
+    "heavy: 需要重依赖（moabb/mne/paper-qa）",
+]

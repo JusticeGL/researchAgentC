@@ -1,0 +1,16 @@
+# 强论断模式。见 IMPLEMENTATION.md §5.6 C3。
+# 命中这些模式的句子被视为"强论断"，其引用必须 support_check == supported。
+# 列表只增不减。
+
+strong_claim_patterns:
+  - "优于"
+  - "首次"
+  - "SOTA"
+  - "state-of-the-art"
+  - "significantly"
+  - "significant"
+  - "outperform"
+  - "novel"
+  - "显著"
+  - "证明"
+  - "best"

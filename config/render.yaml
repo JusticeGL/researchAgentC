@@ -1,0 +1,21 @@
+# 渲染器配置。见 IMPLEMENTATION.md §5.2。
+#
+# scan_sections: 做裸数字扫描的章节标题（markdown 二级标题）与表格块。
+# allow_bare: 裸数字白名单正则。每一条都必须写理由注释，禁止 `.*`。
+
+scan_sections:
+  - "Results"
+  - "Abstract"
+
+# 表格块（以 | 开头的行）也纳入扫描。
+scan_tables: true
+
+allow_bare:
+  # 年份：19xx / 20xx，出现在正文引用与设备描述里
+  - '\b(19|20)\d{2}\b'
+  # 章节号 / 图表号：如 "§4.2"、"Table 2"、"Fig 3"
+  - '(?:§|Table |Fig |Figure |Section )\d+(?:\.\d+)*'
+  # 超参与整数计数：紧跟单位或标识符的纯整数，如 "5 seeds"、"22 channels"、"250 Hz"、"4 classes"
+  - '\b\d+\s*(?:seeds?|channels?|Hz|classes?|subjects?|sessions?|trials?|epochs?|folds?)\b'
+  # 列表 / 编号项行首序号：如 "1. "、"2) "
+  - '^\s*\d+[.)]\s'

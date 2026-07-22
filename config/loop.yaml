@@ -1,0 +1,19 @@
+# 实验循环配置。见 IMPLEMENTATION-P2.md §4.8。
+aide:
+  num_drafts: 3            # 初始草案数
+  max_debug_depth: 3       # 对应 debug 上限
+  debug_prob: 0.5
+search:
+  ucb_c: 0.5               # UCB 探索系数；值不重要，有显式探索项才重要
+  max_nodes: 60            # 硬上限，与预算共同约束
+dedup:
+  threshold: 0.92
+  hard_reject_after: 2
+ledger:
+  max_active: 40
+context:
+  budget_tokens: 24000
+  ancestor_rows: 15
+confirm:
+  n_seeds: 5
+  ci: 0.95
